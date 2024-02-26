@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/static/airplane.png" type="image/x-icon">
+    <title>Log In | Airline Ticket Booking</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(rgba(139, 137, 137, 0.5), rgba(137, 137, 137, 0.5)), url("/static/login-background.jpg") center;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            background-color: #ede9de;
+            width: 30vw;
+            height: 50vh;
+            padding: 10px;
+        }
+        
+        .wrapper>h1 {
+            display: flex;
+            justify-content: center;
+            color: #181D31;
+            gap: 1.5rem;
+        }
+        
+        form {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            padding: 5px;
+            gap: 1rem;
+            margin: 20px 0px;
+        }
+        
+        input {
+            min-width: 50%;
+            margin: 0px 10px 0px 0px;
+            padding: 5px;
+        }
+        
+        form>button {
+            width: 70%;
+            border: none;
+            padding: 5px;
+            font-weight: 500;
+            background-color: #181D31;
+            color: #F0E9D2;
+            cursor: pointer;
+            flex: 1;
+        }
+        
+        .wrapper>h6 {
+            font-size: 10px;
+            cursor: pointer;
+        }
+        
+        .email-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            flex: 1;
+        }
+        
+        .password-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            flex: 1;
+        }
+        
+        label {
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="wrapper">
+            <h1>Log In</h1>
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="email-wrapper">
+                    <label for="username">Enter Username</label>
+                    <input type="tel" name="number" id="number" placeholder="Enter username" required>
+                </div>
+                <div class="password-wrapper">
+                    <label for="passwordinput">Enter Password</label>
+                    <input type="password" name="password" id="password" placeholder="Password" required>
+                </div>
+                <button class="login" name="login">Log In</button>
+            </form>
+            <h6> <a href="register"> don't have account? Register</a></h6>
+        </div>
+    </div>
+</body>
+
+</html>

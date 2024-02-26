@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/static/airplane.png" type="image/x-icon">
+    <title>Register | Airticket Booking</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(rgba(139, 137, 137, 0.5), rgba(137, 137, 137, 0.5)), url("/static/register-background.jpg") center;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            background-color: #ede9de;
+            width: 40vw;
+            height: 60vh;
+            padding: 10px;
+        }
+        
+        .wrapper>h1 {
+            display: flex;
+            justify-content: center;
+            color: #181D31;
+            gap: 1.5rem;
+        }
+        
+        form {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            padding: 5px;
+            gap: 1rem;
+            margin: 20px 0px;
+        }
+        
+        input {
+            min-width: 50%;
+            margin: 0px 15px 0px 0px;
+            padding: 5px;
+        }
+        
+        form>button {
+            width: 50%;
+            border: none;
+            padding: 5px;
+            font-weight: 500;
+            background-color: #181D31;
+            color: #F0E9D2;
+            cursor: pointer;
+            flex: 1;
+            transition: 1s;
+        }
+        
+        form>button:hover {
+            width: 70%;
+        }
+        
+        label {
+            font-size: 12px;
+        }
+        
+        .full-name {
+            display: flex;
+            flex-direction: row;
+        }
+        
+        .contact-user {
+            display: flex;
+            flex-direction: row;
+        }
+        
+        .password {
+            display: flex;
+            flex-direction: row;
+        }
+        
+        .first-name {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        
+        .last-name {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        
+        .email-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        
+        .mobileno {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        
+        .password-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        
+        .confirm-password-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="wrapper">
+            <h1>Register</h1>
+            <form method="POST" action="">
+                {% csrf_token %}
+                <div class="full-name">
+                    <div class="first-name">
+                        <label for="FirstNamelabel">First Name</label>
+                        <input type="text" name="first_name" placeholder="First Name" required>
+                    </div>
+                    <div class="last-name">
+                        <label for="LastNamelabel">Last Name</label>
+                        <input type="text" name="last_name" placeholder="Last Name" required>
+                    </div>
+                </div>
+                <div class="contact-user">
+                    <div class="email-wrapper">
+                        <label for="eamillabel">Enter Email</label>
+                        <input type="email" name="email" placeholder="Enter Email" required>
+                    </div>
+                    <div class="mobileno">
+                        <label for="mobilenolabel">Enter Mobile No.</label>
+                        <input type="tel" name="mobile_no" placeholder="Enter Mobile No." required>
+                    </div>
+                </div>
+                <div class="password">
+                    <div class="password-wrapper">
+                        <label for="passwordlabel">Enter Password</label>
+                        <input type="password" name="password" placeholder="Enter Password" required>
+                    </div>
+                    <div class="confirm-password-wrapper">
+                        <label for="conformpasswordlabel">Confirm Password</label>
+                        <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+                    </div>
+                </div>
+                <button class="submit" name="submit">Submit</button>
+            </form>
+            {% if messages %}
+            <ul class="messages" style="color: red;text-align: center ;">
+                {% for message in messages %}
+                <!--
+                <li{% if message.tags %} class="{{ message.tags }}" {% endif %} style="list-style-type: none;">{{ message }}</li>-->
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+    </div>
+</body>
+
+</html>

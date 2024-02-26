@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/static/airplane.png" type="image/x-icon">
+    <title>Payment</title>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+            overflow-x: hidden;
+        }
+        
+        body {
+            background-color: #F0E9D2;
+        }
+        
+        .container {
+            width: 100%;
+            height: 520px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .payment-container {
+            border: 2px solid black;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 10px;
+        }
+        
+        .amount {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        
+        .card-number {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        
+        .owner-name {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        
+        .extra {
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+        }
+        
+        .extra>div {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        input[type=number]::-webkit-outer-spin-button,
+        input[type=number]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        
+        .button {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .header {
+            border-bottom: 1px solid rgb(56, 56, 56);
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="payment-container">
+                <div class="header">
+                    <h2>Payment Details</h2>
+                    <img src="/static/payment.jpeg" alt="" style="height: 25px; width: 100px;">
+                </div>
+                <div class="amount">
+                    <label for="payment-amount">PAYMENT AMOUNT</label>
+                    <input type="number" min="0" max="100000" name="payment-amount" style="width: 250px; border-radius: 5px;">
+                </div>
+                <div class="card-number">
+                    <label for="cardnumber">CARD NUMBER</label>
+                    <input type="text" id="credit-card-number" name="credit-card-number" maxlength="16" pattern="\d{16}" style="width: 250px; border-radius: 5px;" required>
+                </div>
+                <div class="owner-name">
+                    <label for="cardholdername"> CARD HOLDER NAME</label>
+                    <input type="text" id="credit-card-holder-name" name="credit-card-holder-name" style="width: 250px; border-radius: 5px;">
+                </div>
+                <div class="extra">
+                    <div>
+                        <label for="expirydate">EXPIRY DATE</label>
+                        <input type="month" name="expiry-month" style="width: 100px;">
+                    </div>
+                    <div>
+                        <label for="cvvcode">CVV CODE</label>
+                        <input type="number" name="cvv-code" id="cvv-code" style="width: 100px;">
+                    </div>
+                </div>
+                <div class="button">
+                    <input type="submit" value="submit" style="width: 100px; background-color: #181D31; color: #F0E9D2; cursor: pointer;">
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

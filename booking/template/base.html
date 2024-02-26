@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/static/airplane.png" type="image/x-icon">
+    <title>Airline Ticket Booking</title>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+            overflow-x: hidden;
+        }
+        
+        .header {
+            display: flex;
+            background-color: #181D31;
+            justify-content: space-between;
+            color: #F0E9D2;
+            padding: 0px;
+            width: 100vw;
+            height: 40px;
+            align-items: center;
+        }
+        
+        .logo {
+            margin-left: 1.5rem;
+        }
+        
+        .logo>img {
+            width: 25px;
+        }
+        
+        .list-navbar {
+            margin-right: 1.5em;
+        }
+        
+        .list-container {
+            list-style-type: none;
+            display: flex;
+        }
+        
+        li>a {
+            text-decoration: none;
+            color: #F0E9D2;
+            margin: 0px 10px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+        
+        li>a:hover {
+            color: #E6DDC4;
+            font-size: 18px;
+        }
+        
+        .container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: url("/static/background.jpg") center;
+            background-size: cover;
+            flex-direction: column;
+        }
+        
+        .world>h1 {
+            font-size: 3rem;
+            color: #0e111d;
+        }
+        
+        .book>p {
+            color: #E6DDC4;
+        }
+        
+        .btn {
+            margin: 20px 0px;
+            display: flex;
+            gap: 25px;
+        }
+        
+        button {
+            padding: 8px 15px;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .firts-btn {
+            background-color: #181D31;
+            color: #E6DDC4;
+        }
+        
+        .firts-btn>a {
+            color: #E6DDC4;
+            text-decoration: none;
+        }
+        
+        .second-btn {
+            background-color: #678983;
+            color: #181D31;
+            font-weight: 600;
+        }
+        
+        .second-btn>a {
+            color: #181D31;
+            text-decoration: none;
+        }
+        
+        button:hover {
+            padding: 10px 17px;
+        }
+        
+        .footer {
+            display: flex;
+            flex-direction: row;
+            width: 100vw;
+            background-color: #181D31;
+            justify-content: space-between;
+        }
+        
+        .info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            color: #E6DDC4;
+            gap: 1.5rem;
+            margin-left: 25px;
+        }
+        
+        .contact {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 1rem;
+            color: #E6DDC4;
+        }
+        
+        .address {
+            display: flex;
+            align-items: center;
+        }
+        
+        .address>img {
+            width: 25px;
+            height: 25px;
+        }
+        
+        .number {
+            display: flex;
+            align-items: center;
+        }
+        
+        .number>img {
+            width: 25px;
+            height: 25px;
+        }
+        
+        .email {
+            display: flex;
+            align-items: center;
+        }
+        
+        .email>img {
+            width: 25px;
+            height: 25px;
+        }
+        
+        .payment>img {
+            width: 200px;
+            height: 30px;
+        }
+        
+        .icon {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .icon>img {
+            width: 25px;
+            height: 25px;
+        }
+        
+        li>button {
+            background-color: #E6DDC4;
+            padding: 5px;
+        }
+        
+        .dropdown {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            z-index: 1;
+            align-items: center;
+            background-color: #181D31;
+            margin-top: 0px;
+            margin-left: -1px;
+            width: 85px;
+            cursor: pointer;
+        }
+        
+        .dropdown>li {
+            text-align: center;
+            border-bottom: 1px solid #E6DDC4;
+            margin: 5px;
+        }
+        
+        .user:hover .dropdown {
+            display: block!important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="logo">
+            <img src="/static/airplane.png" alt="">
+        </div>
+        <div class="list-navbar">
+            <ul class="list-container">
+                <li>
+                    <a href="/">Home</a>
+                </li>
+                <li>
+                    <a href="/service">Service</a>
+                </li>
+                <li>
+                    <a href="/booking">Booking</a>
+                </li>
+                {% if user.is_authenticated %}
+                <li class="user">
+                    My account
+                    <ul class="dropdown">
+                        <li>{{user.first_name}}</li>
+                        <li>
+                            <a href="/logout">Logout</a> </li>
+                    </ul>
+                </li>
+                {% else %}
+                <li>
+                    <a href="/login">Log In</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+    <div class="container">
+
+        <div class="world">
+            <h1>EXPLORE WORLD!!!</h1>
+        </div>
+        <div class="book">
+            <p>Book Your Ticket Now</p>
+        </div>
+        <div class="btn">
+            <button class="firts-btn"> <a href="/booking"> Book Now </a></button>
+            <button class="second-btn"> <a href="/service"> Our Services</a></button>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="info">
+            <h2>Airline Ticket Booking</h2>
+            <div class="desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit maxime harum eum consequatur, distinctio suscipit in corrupti quae quos, dolor eveniet sunt neque adipisci possimus, recusandae expedita est blanditiis architecto.
+            </div>
+            <div class="icon">
+                <img src="/static/instagram.png" alt="">
+                <img src="/static/facebook.png" alt="">
+                <img src="/static/twitter.png" alt="">
+            </div>
+        </div>
+        <div class="contact">
+            <h2>contact</h2>
+            <div class="address">
+                <img src="/static/placeholder.png" alt=""> kh-5,ldrp-itr,gandhinagr-84001
+            </div>
+            <div class="number">
+                <img src="/static/contact-book.png" alt=""> +1 234567890</div>
+            <div class="email">
+                <img src="/static/gmail.png" alt=""> lderitr@gmail.com</div>
+            <div class="payment">
+                <img src="/static/payment.jpeg" alt="">
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

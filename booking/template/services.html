@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/static/airplane.png" type="image/x-icon">
+    <title>Services | Airline Ticket Booking</title>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+            overflow-x: hidden;
+        }
+        
+        .header {
+            display: flex;
+            background-color: #181D31;
+            justify-content: space-between;
+            color: #F0E9D2;
+            padding: 0px;
+            width: 100vw;
+            height: 40px;
+            align-items: center;
+        }
+        
+        .logo {
+            margin-left: 1.5rem;
+        }
+        
+        .logo>img {
+            width: 25px;
+        }
+        
+        .list-navbar {
+            margin-right: 1.5em;
+        }
+        
+        .list-container {
+            list-style-type: none;
+            display: flex;
+        }
+        
+        li>a {
+            text-decoration: none;
+            color: #F0E9D2;
+            margin: 0px 10px;
+            cursor: pointer;
+        }
+        
+        li>a:hover {
+            color: #E6DDC4;
+            font-size: 18px;
+        }
+        
+        .footer {
+            display: flex;
+            flex-direction: row;
+            width: 100vw;
+            background-color: #181D31;
+            justify-content: space-between;
+        }
+        
+        .info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            color: #E6DDC4;
+            gap: 1.5rem;
+            margin-left: 25px;
+        }
+        
+        .contact {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 1rem;
+            color: #E6DDC4;
+        }
+        
+        .address {
+            display: flex;
+            align-items: center;
+        }
+        
+        .address>img {
+            width: 25px;
+            height: 25px;
+        }
+        
+        .number {
+            display: flex;
+            align-items: center;
+        }
+        
+        .number>img {
+            width: 25px;
+            height: 25px;
+        }
+        
+        .email {
+            display: flex;
+            align-items: center;
+        }
+        
+        .email>img {
+            width: 25px;
+            height: 25px;
+        }
+        
+        .payment>img {
+            width: 200px;
+            height: 30px;
+        }
+        
+        .icon {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .icon>img {
+            width: 25px;
+            height: 25px;
+        }
+        
+        .container {
+            width: 100vw;
+            background-color: #E6DDC4;
+        }
+        
+        .wrapper {
+            margin: 25px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .wrapper>h3 {
+            display: flex;
+            justify-content: center;
+            font-size: 2rem;
+            color: #181D31;
+        }
+        
+        .list>ol {
+            list-style-type: circle !important;
+            margin-top: 10px;
+        }
+        
+        .list>ol>li {
+            font-size: 25px;
+            color: #181D31;
+            list-style-type: circle !important;
+            margin: 5px 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="logo">
+            <img src="/static/airplane.png" alt="">
+        </div>
+        <div class="list-navbar">
+            <ul class="list-container">
+                <li>
+                    <a href="/">Home</a>
+                </li>
+                <li>
+                    <a href="/service">Service</a>
+                </li>
+                <li>
+                    <a href="/booking">Booking</a>
+                </li>
+                <li>
+                    <a href="/login">Log In</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="container">
+        <div class="wrapper">
+            <h3>Our Services</h3>
+            <div class="list">
+                <ol>
+                    <li>Our first priority is make our customers happy.</li>
+                    <li>We find cheapest ticket price for you.</li>
+                    <li>We give you maximum refund on your cancellation.</li>
+                    <li>We give you discount offers on you're continuous bookings.</li>
+                    <li>We are available 24*7.</li>
+                    <li>Safe & quick payment.</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="info">
+            <h2>Airline Ticket Booking</h2>
+            <div class="desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit maxime harum eum consequatur, distinctio suscipit in corrupti quae quos, dolor eveniet sunt neque adipisci possimus, recusandae expedita est blanditiis architecto.
+            </div>
+            <div class="icon">
+                <img src="/static/instagram.png" alt="">
+                <img src="/static/facebook.png" alt="">
+                <img src="/static/twitter.png" alt="">
+            </div>
+        </div>
+
+        <div class="contact">
+            <h2>contact</h2>
+            <div class="address">
+                <img src="/static/placeholder.png" alt=""> kh-5,ldrp-itr,gandhinagr-84001
+            </div>
+            <div class="number">
+                <img src="/static/contact-book.png" alt=""> +1 234567890</div>
+            <div class="email">
+                <img src="/static/gmail.png" alt=""> lderitr@gmail.com</div>
+            <div class="payment">
+                <img src="/static/payment.jpeg" alt="">
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

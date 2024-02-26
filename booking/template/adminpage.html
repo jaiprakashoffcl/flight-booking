@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" href="/static/airplane.png" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+            overflow-x: hidden;
+            overflow-y: hidden;
+        }
+        
+        .container {
+            display: flex;
+            gap: 10px;
+            background-color: #E6DDc4;
+        }
+        
+        .l-nav {
+            background-color: #181D31;
+            height: 100vh;
+            width: 20vw;
+            color: #F0E9D2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .user-name {
+            font-family: 'Courgette', cursive;
+            font-size: 25px;
+            padding-left: 10px;
+            padding-bottom: 10px;
+        }
+        
+        ul>li>a {
+            text-decoration: none;
+            color: #E6DDc4;
+            font-size: 20px;
+            transform: 5s;
+        }
+        
+        ul>li>a:hover {
+            padding-left: 10px;
+        }
+        
+        ul {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        ul>li {
+            border-bottom: 1px #E6DDc4 solid;
+            padding-left: 10px;
+            padding-bottom: 5px;
+        }
+        
+        .right-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+            flex: 2;
+        }
+        
+        th,
+        td {
+            padding: 5px;
+        }
+        
+        table {
+            border: 1px #181D31 solid;
+        }
+        
+        td {
+            border: 1px #181D31 solid;
+        }
+        
+        .main-header {
+            margin-top: 20px;
+        }
+        
+        .main-header>h1 {
+            color: #181D31;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="l-nav">
+            <div class="user-name">Hi, Vedant Vyas</div>
+            <div class="nav-list">
+                <ul>
+                    <li class="f-status"> <a href="/">Flight Status</a> </li>
+                    <li><a href="/addflight">Add Flight</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="right-container">
+            <div class="main-header">
+                <h1>Flight Status</h1>
+            </div>
+            <div class="content">
+                <table>
+                    <tr>
+                        <th>PNR No</th>
+                        <th>From</th>
+                        <th>To</th>
+                        <th>Time</th>
+                        <th>Economy</th>
+                        <th>Premium Economy</th>
+                        <th>Business</th>
+                        <th>First Class</th>
+                        <th>Date</th>
+                        <th>Everyday</th>
+                    </tr>
+                    {% for flight in flights%}
+                    <tr>
+                        <td>{{flight.pnr_no}}</td>
+                        <td>{{flight.From}}</td>
+                        <td>{{flight.To}}</td>
+                        <td>{{flight.dept_time}}</td>
+                        <td>{{flight.economy_seat}}</td>
+                        <td>{{flight.pre_economy_seat}}</td>
+                        <td>{{flight.business_seat}}</td>
+                        <td>{{flight.first_class_seat}}</td>
+                        <td>{{flight.date}}</td>
+                        <td>{{flight.everyday}}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

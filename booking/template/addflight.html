@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/static/airplane.png" type="image/x-icon">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js">
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js">
+    </script>
+
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/ui-lightness/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <title>Admin Panel</title>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+            overflow-x: hidden;
+            overflow-y: hidden;
+        }
+        
+        .container {
+            display: flex;
+            gap: 10px;
+            background-color: #E6DDc4;
+        }
+        
+        .l-nav {
+            background-color: #181D31;
+            height: 100vh;
+            width: 20vw;
+            color: #F0E9D2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .user-name {
+            font-family: 'Courgette', cursive;
+            font-size: 25px;
+            padding-left: 10px;
+            padding-bottom: 10px;
+        }
+        
+        ul>li>a {
+            text-decoration: none;
+            color: #E6DDc4;
+            font-size: 20px;
+            transform: 5s;
+        }
+        
+        ul>li>a:hover {
+            padding-left: 10px;
+        }
+        
+        ul {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        ul>li {
+            border-bottom: 1px #E6DDc4 solid;
+            padding-left: 10px;
+            padding-bottom: 5px;
+        }
+        
+        .right-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+            flex: 2;
+        }
+        
+        .main-header {
+            margin-top: 20px;
+        }
+        
+        .main-header>h1 {
+            color: #181D31;
+        }
+        
+        .content {
+            width: 70vw;
+            height: 40vw;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            text-align: center;
+        }
+        
+        .company,
+        .where,
+        .which,
+        .eco-seat,
+        .pre-seat,
+        .eco-seat-price,
+        .pre-seat-price,
+        .when {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+        
+        input {
+            background-color: #E6DDc4;
+            border: none;
+            border-bottom: 2px #181D31 solid;
+            color: #181D31;
+            padding: 5px;
+        }
+        
+        button {
+            background-color: #181D31;
+            color: #F0E9D2;
+            width: 30vw;
+            padding: 5px 0px;
+            display: block;
+            margin: 0 auto;
+        }
+        
+        button:hover {
+            cursor: pointer;
+        }
+        
+         ::placeholder {
+            color: #181D31;
+            opacity: 1;
+        }
+        
+        .ui-autocomplete {
+            max-height: 200px;
+            overflow-y: auto;
+            overflow-x: hidden;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="l-nav">
+            <div class="user-name">Hi, Vedant Vyas</div>
+            <div class="nav-list">
+                <ul>
+                    <li class="f-status"> <a href="/adminpage">Flight Status</a> </li>
+                    <li><a href="/">Add Flight</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="right-container">
+            <div class="main-header">
+                <h1>Add Flight</h1>
+            </div>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="content">
+                    <div class="company">
+                        <div class="company-name">
+                            <label for="companyname">company Name:-</label>
+                            <input type="text" class="company-inp" placeholder="Enter Company Name" name="company_name">
+                        </div>
+                        <div class="pnr-no">
+                            <label for="pnrno">PNR No:-</label>
+                            <input type="number" class="pnr-inp" placeholder="Enter PNR No" name="pnr_no">
+                        </div>
+                    </div>
+                    <div class="where">
+                        <div class="from">
+                            <label for="from">From:-</label>
+                            <input type="text" class="from-inp" placeholder="From" name="from" id="from">
+                        </div>
+                        <div class="to">
+                            <label for="to">To:-</label>
+                            <input type="text" class="to-inp" placeholder="To" name="to" id="to">
+                        </div>
+                    </div>
+                    <div class="which">
+                        <div class="time">
+                            <label for="time">Depature Time:-</label>
+                            <input type="text" class="time-inp" placeholder="Depature Time" name="dept_time">
+                        </div>
+                        <div class="time">
+                            <label for="time">Rich Time:-</label>
+                            <input type="text" class="time-inp" placeholder="Depature Time" name="rich_time">
+                        </div>
+                        <div class="duration">
+                            <label for="duration">Duration:-</label>
+                            <input type="text" class="duration-inp" placeholder="duration" name="duration">
+                        </div>
+                    </div>
+                    <div class="eco-seat">
+                        <div class="economy">
+                            <label for="economyseat">Economy Seat:-</label>
+                            <input type="number" class="economy-seat-inp" placeholder="Economy Seat" name="economy_seat">
+                        </div>
+                        <div class="pre-economy">
+                            <label for="preeconomyseat">Premium Economy Seat:-</label>
+                            <input type="number" class="pre-economy-seat-inp" placeholder="Premium Economy Seat" name="pre_economy_seat">
+                        </div>
+                    </div>
+                    <div class="pre-seat">
+                        <div class="business">
+                            <label for="businesseat">Business Seat:-</label>
+                            <input type="number" class="business-seat-inp" placeholder="Business Seat" name="business_seat">
+                        </div>
+                        <div class="first-class">
+                            <label for="firstclass">First class Seat:-</label>
+                            <input type="number" class="fisrt-class-seat-inp" placeholder="first class Seat" name="first_class_seat">
+                        </div>
+                    </div>
+                    <div class="eco-seat-price">
+                        <div class="economy-price">
+                            <label for="economyseatprice">Economy Seat Price:-</label>
+                            <input type="number" class="economy-seat-price-inp" placeholder="Economy Seat Price" name="economy_seat_price">
+                        </div>
+                        <div class="pre-economy-price">
+                            <label for="preeconomyseatprice">Premium Economy Seat Pirce:-</label>
+                            <input type="number" class="pre-economy-seat-price-inp" placeholder="Premium Economy Seat Price" name="pre_economy_seat_price">
+                        </div>
+                    </div>
+                    <div class="pre-seat-price">
+                        <div class="business-price">
+                            <label for="businesseatprice">Business Seat Price:-</label>
+                            <input type="number" class="business-seat-Price-inp" placeholder="Business Seat Price" name="business_seat_price">
+                        </div>
+                        <div class="first-class-price">
+                            <label for="firstclassprice">First class Seat Price:-</label>
+                            <input type="number" class="fisrt-class-seat-price-inp" placeholder="first class Seat price" name="first_class_seat_price">
+                        </div>
+                    </div>
+                    <div class="when">
+                        <div class="one-day">
+                            <label for="oneday"> Date:-</label>
+                            <input type="date" class="day-one-inp" placeholder="Day One" name="date">
+                        </div>
+                        <div class="everyday">
+                            <label for="everyday"> Everyday:-</label>
+                            <input type="text" class="everyday-inp" placeholder="Everyday" name="everyday">
+                        </div>
+                    </div>
+                    <button type="submit">Add Flight</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        $(function() {
+            var availableTags = ["Delhi (DEL)",
+                "Mumbai (BOM)",
+                "Ahmedabad (AMD)",
+                "Bengaluru (BLR)",
+                "Hyderabad (HYD)",
+                "Chennai (MAA)",
+                "Kolkata (CCU)",
+                "Kochi (COK)",
+                "Los Angeles (LAX)",
+                "New York (JFK)",
+                "Chicago (ORD)",
+                "Atlanta (ATL)",
+                "Miami (MIA)",
+                "Dallas/Fort Worth (DFW)",
+                "San Francisco (SFO)",
+                "Sydney (SYD)",
+                "Melbourne (MEL)",
+                "Brisbane (BNE)",
+                "Perth (PER)",
+                "Adelaide (ADL)",
+                "Darwin (DRW)",
+                "Cairns (CNS)",
+                "Moscow (SVO)",
+                "Saint Petersburg (LED)",
+                "Sochi (AER)",
+                "Ekaterinburg (SVX)",
+                "Novosibirsk (OVB)",
+                "Kazan (KZN)",
+                "Vladivostok (VVO)",
+                "Toronto (YYZ)",
+                "Vancouver (YVR)",
+                "Montreal (YUL)",
+                "Calgary (YYC)",
+                "Edmonton (YEG)",
+                "Ottawa (YOW)",
+                "Halifax (YHZ)",
+                "Tokyo (HND)",
+                "Osaka (KIX)",
+                "Nagoya (NGO)",
+                "Fukuoka (FUK)",
+                "Sapporo (CTS)",
+                "Okinawa (OKA)",
+                "Sendai (SDJ)",
+                "Bangkok (BKK)",
+                "Phuket (HKT)",
+                "Chiang Mai (CNX)",
+                "Hat Yai (HDY)",
+                "Koh Samui (USM)",
+                "Krabi (KBV)",
+                "Surat Thani (URT)"
+            ];
+            $("#from").autocomplete({
+                source: availableTags
+            });
+            $("#to").autocomplete({
+                source: availableTags
+            });
+
+        });
+    </script>
+</body>
+
+</html>
